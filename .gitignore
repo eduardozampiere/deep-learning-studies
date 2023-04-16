@@ -1,0 +1,6 @@
+misc
+.idea
+__pychache__
+
+*.pyc
+*.json
