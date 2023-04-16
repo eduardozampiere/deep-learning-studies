@@ -5,3 +5,6 @@ __pychache__
 *.pyc
 *.json
 *.lock
+*.h5
+
+fashion-mnist_*.csv
