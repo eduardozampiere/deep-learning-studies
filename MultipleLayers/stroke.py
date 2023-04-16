@@ -18,7 +18,7 @@ class NeuralNetwork:
         self.one_hot_encoder = OneHotEncoder()
         self.column_transformer = ColumnTransformer([], remainder='passthrough')
         self.standard_scaler = StandardScaler()
-        self.model = Sequential()
+        self.model = None
 
         self.x = None
         self.y = None
@@ -29,9 +29,9 @@ class NeuralNetwork:
 
         assert loss, "Loss must not be empty"
         assert optimizer, "Optimizer must not be empty"
-        self.init_model(layers, loss, optimizer, metrics)
+        self.init_model(layers, metrics, loss, optimizer)
 
-    def init_model(self, layers, loss, optimizer, metrics):
+    def init_model(self, layers=None, metrics=None, loss='binary_crossentropy', optimizer='adam'):
         """
         Initialize the model with the given layers, loss, optimizer and metrics
         :param layers:
@@ -40,6 +40,7 @@ class NeuralNetwork:
         :param metrics:
         :return:
         """
+        self.model = Sequential()
         if not layers:
             layers = [
                 Dense(units=6, activation='relu'),
@@ -54,6 +55,7 @@ class NeuralNetwork:
             self.model.add(layer)
 
         self.model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
+        return self.model
 
     def init_treatment(self):
         """
