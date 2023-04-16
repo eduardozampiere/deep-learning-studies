@@ -27,7 +27,11 @@ to
 ```
 tensorflow = "^2.12.0"
 ```
-* conda create python=3.9 -n <env_name>
-* conda activate <env_name>
-* poetry init
-* poetry install
+
+To install:
+```
+conda create python=3.9 -n <env_name>
+conda activate <env_name>
+poetry init
+poetry install
+```
