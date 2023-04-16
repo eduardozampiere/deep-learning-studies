@@ -128,24 +128,32 @@ class NeuralNetwork:
 
 
     def fit(self, batch_size=16, epochs=100):
-        self.model.fit(self.x, self.y, batch_size=batch_size, epochs=epochs)
+        self.model.fit(self.x, self.y, batch_size=batch_size, epochs=epochs, verbose=1)
 
 
-    def accuracy(self):
+    def evaluate(self):
+       return self.model.evaluate(self.x_test, self.y_test)
+
+    def predict(self):
         y_pred = self.model.predict(self.x_test)
         y_pred = (y_pred > 0.5)
 
         accuracy = accuracy_score(self.y_test, y_pred)
-        return accuracy
+        return y_pred, accuracy
 
 
 if __name__ == '__main__':
     dataset_original = pd.read_csv('../src/stroke.csv')
 
-    model = NeuralNetwork(dataset_original)
+    # sgd ou adam ? Testar
+    model = NeuralNetwork(dataset_original, optimizer='sgd')
     model.init_treatment()
     model.fit(epochs=5)
 
-    accuracy = model.accuracy()
+    # _, accuracy = model.predict()
+    loss, accuracy = model.evaluate()
     print(f"Accuracy: {accuracy}")
+    print(f"Loss: {loss}")
+
+
     k = 0
