@@ -35,6 +35,12 @@ loaded_model = model_from_json(loaded_model_json) # load the model
 loaded_model.load_weights('model.h5') # load the weights [IMPORTANT]
 ```
 
+### Recurrent Neural Networks
+https://www.youtube.com/watch?v=qjrad0V0uJE
+
+## LSTM (Long Short Term Memory)
+https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
 
 ### About the project
 * Multiple layers
