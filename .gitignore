@@ -10,3 +10,4 @@ __pychache__
 
 fashion-mnist_*.csv
 dog-cat
+.DS_Store
