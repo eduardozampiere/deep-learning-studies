@@ -6,5 +6,7 @@ __pychache__
 *.json
 *.lock
 *.h5
+*.keras
 
 fashion-mnist_*.csv
+dog-cat
